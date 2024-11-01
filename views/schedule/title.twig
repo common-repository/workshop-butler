@@ -1,0 +1,20 @@
+{% if layout == 'tile' %}
+    <a href="{{ event.get_url() }}" class="wsb-tile-title"
+        {% if event.is_url_external %} target="_blank" {% endif %}>
+        {% if truncate > 0 %}
+            {{ event.title|truncate(truncate) }}...
+        {% else %}
+            {{ event.title }}
+        {% endif %}
+    </a>
+{% else %}
+    <div class="wsb-table__col wsb-table__col-title {% if event.type.badge %} with-badge {% endif %} ">
+        {% if event.type.badge %}
+            <img class="wsb-table__img" src="{{ event.type.badge }}">
+        {% endif %}
+        <a href="{{ event.get_url() }}" class="wsb-table__link" {% if event.is_url_external %} target="_blank" {% endif %}>
+            {{ event.title }}
+        </a>
+        &nbsp;{{ include('tag.twig') }}
+    </div>
+{% endif %}

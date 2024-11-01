@@ -1,0 +1,14 @@
+<div class="wsb-schedule">
+    {% if layout == 'tile' %}
+        <div class="wsb-tiles" data-event-list>
+            {{ content | raw }}
+        </div>
+    {% else %}
+        <div class="wsb-table" data-event-list>
+            {{ content | raw }}
+        </div>
+    {% endif %}
+    <div class="wsb-no-events">
+        {{ wsb_t('schedule.noEvents') }}
+    </div>
+</div>

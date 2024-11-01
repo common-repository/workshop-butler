@@ -1,0 +1,5 @@
+{% if trainer.url %}
+    <a href="{{ trainer.url }}">{{ trainer.get_full_name() }}</a>
+{% else %}
+    <div>{{ trainer.get_full_name() }}</div>
+{% endif %}

@@ -1,0 +1,47 @@
+<div class="wsb-congratulation" id="wsb-success" style="display: none;">
+    <h2 class="wsb-congratulation__title">
+        {{ wsb_t('registration.successTitle') }}
+    </h2>
+    <div class="wsb-congratulation__p">
+        {{ wsb_t('registration.successMsg') }}
+    </div>
+</div>
+
+<form action="#" class="wsb-form" id="wsb-form">
+    <div class="wsb-form__body">
+        {% if event.registration_form.instructions %}
+            <div class="wsb-form__instructions">{{ event.registration_form.instructions }}</div>
+        {% endif %}
+        {% for section in event.registration_form.sections %}
+            {% if section.id == 'ticket' %}
+                {{ include('ticket-section.twig') }}
+            {% elseif section.id == 'payment' %}
+                <div class="wsb-form__payment-alert wsb-not-secure-alert">
+                    This page is not secure. Card payments are turned off.
+                </div>
+                <div class="wsb-form__payment-alert wsb-no-payment-method">
+                    No payment method is available. You cannot register to this event.
+                </div>
+                {{ include('payment-section.twig') }}
+            {% else %}
+                <section>
+                    {% if section.id != 'footer' %}
+                        <div class="wsb-form__section-title">{{ wsb_t("form.section.#{section.id}" | lower) }}</div>
+                    {% endif %}
+                    {% for field in section.fields %}
+                        {{ include('field.twig') }}
+                    {% endfor %}
+                </section>
+            {% endif %}
+        {% endfor %}
+        <div class="wsb-form__error" data-form-major-error></div>
+        {% if event.state.closed() %}
+            <button class="wsb-form__btn" disabled>{{ wsb_f(event.state) }}</button>
+        {% else %}
+            <button type="submit" class="wsb-form__btn" id="default-submit-button">
+                <i class="fa fa-spinner fa-spin" style="display: none;"></i> {{ wsb_t('event.form.button') }}
+            </button>
+            <div id="paypal-button-container" style="display:none;"></div>
+        {% endif %}
+    </div>
+</form>

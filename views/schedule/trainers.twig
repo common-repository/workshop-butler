@@ -1,0 +1,31 @@
+{% if layout == 'tile' %}
+    <div class="wsb-tile-content">
+        {% for trainer in event.trainers %}
+            <div class="wsb-trainer">
+                {% if trainer.url %}
+                    <a href="{{ trainer.url }}">
+                        <img class="wsb-photo" src="{{ trainer.photo }}"/>
+                    </a>
+                    <a class="wsb-name" href="{{ trainer.url }}"> {% if name %} {{ trainer.get_full_name }} {% endif %}</a>
+                {% else %}
+                    <img class="wsb-photo" src="{{ trainer.photo }}"/>{% if name %} {{ trainer.get_full_name }} {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="wsb-table__col wsb-table__col-trainers {% if not name %} without-name {% endif %}">
+        {% for trainer in event.trainers %}
+            <div class="wsb-trainer">
+                {% if trainer.url %}
+                    <a href="{{ trainer.url }}">
+                        <img class="wsb-photo" src="{{ trainer.photo }}"/>
+                    </a>
+                    <a class="wsb-name" href="{{ trainer.url }}"> {% if name %} {{ trainer.get_full_name }} {% endif %}</a>
+                {% else %}
+                    <img class="wsb-photo" src="{{ trainer.photo }}"/>{% if name %} {{ trainer.get_full_name }} {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

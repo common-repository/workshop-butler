@@ -1,0 +1,7 @@
+{% if layout == 'tile' %}
+    <div class="wsb-tile-info">
+        {{ wsb_f(event.location) }}
+    </div>
+{% else %}
+    <div class="wsb-table__col wsb-table__col-location">{{ wsb_f(event.location) }}</div>
+{% endif %}

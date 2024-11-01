@@ -1,0 +1,170 @@
+/* This part must in in common styles */
+/* Temporary here */
+.b-error {
+  position: absolute;
+  right: 0px;
+  top: 32px;
+  font-size: 10px;
+  color: #E73B2B;
+}
+
+.wsb-content .wsb-form__payment-alert {
+  background-color: #E73B2B;
+  color: white;
+  padding: 1em;
+}
+.wsb-content .wsb-not-secure-alert,
+.wsb-content .wsb-no-payment-method {
+  display: none;
+}
+
+.wsb-content .wsb-form-not-secure .wsb-not-secure-alert {
+  display: block;
+}
+.wsb-content .wsb-form-without-payment .wsb-no-payment-method {
+  display: block;
+}
+
+.wsb-form__error {
+  margin-left: 10em;
+}
+
+.wsb-content .wsb-form__field {
+  position: relative;
+}
+.wsb-content .wsb-stripe-card-error {
+  padding-top: 1em;
+  color: #E73B2B;
+}
+
+.wsb-content .wsb-form__payment {
+  margin-bottom: 0;
+}
+
+.wsb-content .wsb-form__card {
+  border-color: #BBB;
+  border-radius: 2px;
+  height: 2em;
+  margin-bottom: 1em;
+}
+.wsb-form__payment-holder {
+  width: 100%;
+  display: block;
+}
+
+.wsb-form__payment-holder .wsb-form__error {
+  padding-bottom: 0;
+}
+
+.wsb-content .wsb-form__btn:disabled {
+  opacity: 0.5;
+  cursor: auto;
+}
+
+/* This part is only relevant for WordPress */
+.wsb-content .wsb-trainer-profile .wsb-trainer-buttons {
+  padding-top: 1em;
+}
+.wsb-content .wsb-left-col {
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: descr;
+  -ms-grid-row: 1;
+  grid-row-start: 1;
+  -ms-grid-row-span: 3;
+  grid-row-end: span 3;
+}
+.wsb-content .wsb-right-col {
+  width: 100%;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: first;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 479px) {
+  .wsb-content .wsb-left-col {
+    width: 100%;
+    margin-right: 0;
+  }
+  .wsb-content .wsb-right-col {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 30px;
+  }
+}
+
+/** promo link **/
+.wsb-content a.wsb-promo-link:focus {
+  outline: none;
+}
+
+/** tax validation widget **/
+.wsb-form__tax-widget {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto;
+  column-gap: 8px;
+  grid-template-columns: auto;
+  grid-template-areas: "input" "message" "buttons";
+}
+.wsb-form__tax-widget .ok-message, .wsb-form__tax-widget .warn-message, .wsb-form__tax-widget .error-message {
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 4px;
+}
+.wsb-form__tax-widget .ok-message {
+  color: #819D44;
+  background-color: #E2F3DC;
+}
+.wsb-form__tax-widget .warn-message {
+  color: #788188;
+  background-color: #FEF3DE;
+}
+.wsb-form__tax-widget .error-message {
+  color: #FFFFFF;
+  background-color: #f1847a;
+}
+.wsb-form__tax-widget-input {
+  grid-area: input;
+}
+.wsb-form__tax-widget-buttons {
+  grid-area: buttons;
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+}
+.wsb-form__tax-widget-buttons a {
+  cursor: pointer;
+  flex-grow: 1;
+  padding: 0.35em 0;
+  text-align: center;
+  user-select: none;
+}
+.wsb-form__tax-widget-buttons a.disabled {
+  pointer-events: none;
+  text-decoration: none;
+  cursor: default;
+  opacity: 0.6;
+}
+.wsb-form__tax-widget-message {
+  grid-area: message;
+}
+a.wsb-form__tax-widget-apply, a.wsb-form__tax-widget-apply.disabled {
+  border-radius: 4px;
+  background-color: #4a90e2;
+  border: solid 1px #4a90e2;
+  color: #fff !important;
+  text-decoration: none !important;
+}
+.wsb-form__tax-widget-clear, a.wsb-form__tax-widget-clear.disabled {
+  border-radius: 4px;
+  border: solid 1px #4a90e2;
+  color: #4a90e2 !important;
+  margin-left: 7px;
+}
+#wsb-form-tax-widget {
+  align-items: flex-start;
+}
+#wsb-form-tax-widget .wsb-label {
+  padding-top: .5em;
+}

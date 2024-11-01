@@ -1,0 +1,33 @@
+<div class="wsb-form__tickets" id="wsb-tickets">
+    {% for ticket in field.tickets.types %}
+        {% if ticket.active() %}
+            <div class="wsb-form__ticket">
+                <input id="{{ ticket.id }}" name="{{ field.name }}" title="{{ field.label }}" type="radio"
+                        data-control required value="{{ ticket.id }}"
+                        data-amount="{{ ticket.price.amount }}"
+                        data-currency="{{ ticket.price.currency }}"
+                        {% if not next_loop %} checked {% endif %}
+                        {% if disabled %} disabled {% endif %} />
+
+                <label for="{{ ticket.id }}" class="wsb-label">
+                    <strong>{{ wsb_f(ticket, 'price') }}</strong>
+                    {{ ticket.name }}
+                    {% if field.tickets.excluded_tax and ticket.price.tax > 0 %}
+                    <span class="wsb-ticket__tax">
+                        + {{ wsb_t("tax.amount") | format(wsb_f(ticket, 'tax')) }}
+                    </span>
+                    {% endif %}
+                </label>
+            </div>
+            {% set next_loop = true %}
+        {% endif %}
+    {% endfor %}
+    <div class="wsb-form__tax" data-tax-description>
+        {% if field.tickets.excluded_tax %}
+            {{ wsb_t("tax.excluded_all") }} {% if field.tickets.tax_rate %} {{ field.tickets.tax_rate }}% {% endif %}
+            {% if field.tickets.validate_tax %}<a data-vat-apply-link>{{ wsb_t("tax.widget.apply-link") }}</a>{% endif %}
+        {% else %}
+            {{ wsb_t("tax.included_all") }}
+        {% endif %}
+    </div>
+</div>
